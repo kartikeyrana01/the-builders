@@ -607,6 +607,42 @@ footer {
   color: white;
 }
 
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 200;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-main);
+  border-radius: 2px;
+  transition: all 0.35s ease;
+  transform-origin: center;
+}
+
+/* Hamburger → X animation */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 @media (max-width: 900px) {
   .glow-text { font-size: 4rem; }
   .contact-card { padding: 3rem; }
@@ -614,8 +650,58 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .nav-links a { display: none; }
-  .nav-links a.btn-primary { display: inline-flex; margin-left: 0; }
+  .hamburger { display: flex; }
+
+  nav {
+    justify-content: center;
+    position: relative;
+  }
+
+  nav .logo {
+    position: static;
+    transform: none;
+    text-align: center;
+  }
+
+  .hamburger {
+    position: absolute;
+    right: 5%;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(3, 7, 18, 0.97);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 5%;
+    z-index: 150;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    display: block;
+    margin-left: 0;
+    padding: 0.85rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+  }
+
+  .nav-links a:last-child { border-bottom: none; }
+
+  .nav-links a.btn-primary {
+    display: none;
+  }
+
   .glow-text { font-size: 3rem; }
   .hero { min-height: 85vh; padding-top: 4rem; }
   .cta-group { flex-direction: column; width: 100%; gap: 1rem; }
@@ -625,7 +711,7 @@ footer {
   .section-header h2 { font-size: 2.5rem; }
   .card { padding: 2rem 1.5rem; }
   .contact-card { padding: 2rem 1.5rem; }
-  
+
   .whatsapp-widget {
     bottom: 20px;
     right: 20px;
