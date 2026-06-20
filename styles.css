@@ -478,6 +478,11 @@ input:focus, textarea:focus {
   margin: 0 auto;
 }
 
+.team-grid-4 {
+  max-width: 1100px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
 .team-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
